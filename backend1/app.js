@@ -6,7 +6,7 @@ const Operation = require('./model/Operations');
 const env = require('dotenv').config();
 
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
 
 const URL = process.env.MONGO_URL
 mongoose.set("strictQuery",true)
@@ -62,7 +62,7 @@ app.delete('/deleteUser/:id',async (req,res)=>{
     const {id} = req.params;
 
     const delUser = await Operation.findByIdAndDelete(id);
-    console.log(delUser)
+    // console.log(delUser)
      
     res.json(delUser)
 })

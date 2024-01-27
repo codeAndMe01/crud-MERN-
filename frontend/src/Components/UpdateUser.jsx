@@ -28,8 +28,6 @@ const UpdateUser = () => {
   async function update(e){
     e.preventDefault();
 
-   
-
     try {
       const result = await axios.put(`http://localhost:8080/updateUser/${id}`,{name,email,age})
       console.log("result",result)

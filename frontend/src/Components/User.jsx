@@ -8,12 +8,16 @@ const User = () => {
 
    useEffect(()=>{
     axios.get('http://localhost:8080')
-    .then(result => setUser(result.data))
+    .then(result => {
+      //  console.log(result)
+      setUser(result.data)
+    })
     .catch(err => console.log(err));
-   }) 
+   },['handleDelete']) 
 
     async function handleDelete(id){
       axios.delete(`http://localhost:8080/deleteUser/${id}`);
+        
     }
 
   return (
@@ -23,7 +27,7 @@ const User = () => {
         <table className="table">
           <thead>
             <tr>
-              {/* <th scope="col">S.no</th> */}
+              <th scope="col">S.no</th>
               <th scope="col">Name</th>
               <th scope="col">Age</th>
               <th scope="col">Eamil</th>
@@ -31,9 +35,9 @@ const User = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user)=>{
-            return  <tr>
-                {/* <td>{user._id}</td> */}
+            {users.map((user,index)=>{
+            return <tr key={index}>
+                <td>{index+1}</td>
                 <td>{user.name}</td>
                 <td>{user.age}</td>
                 <td>{user.email}</td>
